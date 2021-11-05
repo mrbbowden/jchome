@@ -1,3 +1,6 @@
+data "template_file" "user_data" {
+  template = file("setup.yml")
+}
 provider "aws" {}
 #you must have creds in environment
 #PS C:\> $Env:AWS_ACCESS_KEY_ID=" "
@@ -12,26 +15,27 @@ resource "aws_instance" "webjson_server" {
   instance_type = "t2.micro"
   key_name = "terraform_key"
   vpc_security_group_ids = [aws_security_group.ssh-sg.id]
+  user_data = data.template_file.user_data.rendered
   tags = {
     Name = random_pet.name.id
   }
-  provisioner "file" {
-    source      = "setup.sh"
-    destination = "/tmp/setup.sh"
-  }
-  connection {
-      type        = "ssh"
-      user        = "centos"
-      private_key = "${file("C:/users/bbowden/.ssh/keep/id_rsa")}"
-      host        = "${self.public_dns}"
-    }
- # Change permissions on bash script and execute from ec2-user.
-  provisioner "remote-exec" {
-    inline = [
-      "chmod +x /tmp/setup.sh",
-      "sudo /tmp/setup.sh",
-    ]
-  }
+  #provisioner "file" {
+  #  source      = "setup.sh"
+  #  destination = "/tmp/setup.sh"
+  #}
+  #connection {
+  #    type        = "ssh"
+  #    user        = "centos"
+  #    private_key = "${file("C:/users/bbowden/.ssh/keep/id_rsa")}"
+  #    host        = "${self.public_dns}"
+  #  }
+  # Change permissions on bash script and execute from ec2-user.
+  #provisioner "remote-exec" {
+  #  inline = [
+  #    "chmod +x /tmp/setup.sh",
+  #    "sudo /tmp/setup.sh",
+  #  ]
+  #}
 }
 resource "aws_security_group" "ssh-sg" {
   name = "${random_pet.name.id}-sg"

@@ -1,0 +1,17 @@
+#cloud-config
+# 
+packages:
+  - httpd
+
+package_upgrade: true
+runcmd:
+ - [ /bin/systemctl, enable, httpd ]
+ - [ /bin/systemctl, start, httpd]
+ - [ /bin/systemctl, status, httpd]
+
+#
+power_state:
+  mode: reboot
+  message: Bye Bye
+  timeout: 30
+  condition: True
