@@ -36,8 +36,7 @@ resource "aws_security_group" "ssh-sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
-provisioner "file" {
+  provisioner "file" {
     source      = "setup.sh"
     destination = "/tmp/setup.sh"
   }
@@ -48,3 +47,5 @@ provisioner "file" {
       "sudo /tmp/setup.sh",
     ]
   }
+}
+
