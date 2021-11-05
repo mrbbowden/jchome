@@ -5,6 +5,7 @@ provider "aws" {}
 #PS C:\> $Env:AWS_DEFAULT_REGION=" "
 #ssh key
 #ssh key terraform_key must exist in aws
+#point this at the private key about line 25
 resource "random_pet" "name" {}
 resource "aws_instance" "webjson_server" {
   ami           = "ami-05d7cb15bfbf13b6d"
@@ -13,6 +14,23 @@ resource "aws_instance" "webjson_server" {
   vpc_security_group_ids = [aws_security_group.ssh-sg.id]
   tags = {
     Name = random_pet.name.id
+  }
+  provisioner "file" {
+    source      = "setup.sh"
+    destination = "/tmp/setup.sh"
+  }
+  connection {
+      type        = "ssh"
+      user        = "centos"
+      private_key = "${file("C:/users/bbowden/.ssh/keep/id_rsa")}"
+      host        = "${self.public_dns}"
+    }
+ # Change permissions on bash script and execute from ec2-user.
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/setup.sh",
+      "sudo /tmp/setup.sh",
+    ]
   }
 }
 resource "aws_security_group" "ssh-sg" {
@@ -36,16 +54,6 @@ resource "aws_security_group" "ssh-sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  provisioner "file" {
-    source      = "setup.sh"
-    destination = "/tmp/setup.sh"
-  }
- # Change permissions on bash script and execute from ec2-user.
-  provisioner "remote-exec" {
-    inline = [
-      "chmod +x /tmp/setup.sh",
-      "sudo /tmp/setup.sh",
-    ]
-  }
+  
 }
 
