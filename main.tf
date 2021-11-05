@@ -41,4 +41,10 @@ provisioner "file" {
     source      = "setup.sh"
     destination = "/tmp/setup.sh"
   }
-
+ # Change permissions on bash script and execute from ec2-user.
+  provisioner "remote-exec" {
+    inline = [
+      "chmod +x /tmp/setup.sh",
+      "sudo /tmp/setup.sh",
+    ]
+  }
