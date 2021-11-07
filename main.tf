@@ -19,24 +19,7 @@ resource "aws_instance" "webjson_server" {
   tags = {
     Name = random_pet.name.id
   }
-  #provisioner "file" {
-  #  source      = "setup.sh"
-  #  destination = "/tmp/setup.sh"
-  #}
-  #connection {
-  #    type        = "ssh"
-  #    user        = "centos"
-  #    private_key = "${file("C:/users/bbowden/.ssh/keep/id_rsa")}"
-  #    host        = "${self.public_dns}"
-  #  }
-  # Change permissions on bash script and execute from ec2-user.
-  #provisioner "remote-exec" {
-  #  inline = [
-  #    "chmod +x /tmp/setup.sh",
-  #    "sudo /tmp/setup.sh",
-  #  ]
-  #}
-}
+  
 resource "aws_security_group" "ssh-sg" {
   name = "${random_pet.name.id}-sg"
   ingress {
