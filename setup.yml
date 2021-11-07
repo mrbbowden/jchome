@@ -8,7 +8,7 @@ runcmd:
  - [ /bin/systemctl, enable, httpd ]
  - [ /bin/systemctl, start, httpd]
  - [ /bin/systemctl, status, httpd]
- - [ wget "https://raw.githubusercontent.com/mrbbowden/jchome/main/index.html",-O,/var/www/html/index.html ]
+ - [ wget, "https://raw.githubusercontent.com/mrbbowden/jchome/main/index.html",-O,/var/www/html/index.html ]
 
 
 #power_state:
