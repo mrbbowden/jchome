@@ -1,16 +1,13 @@
 #cloud-config
 # 
-packages:
-  - httpd
-
-package_upgrade: true
 runcmd:
+ - [ yum ,install, -y , httpd ]
  - [ /bin/systemctl, enable, httpd ]
  - [ /bin/systemctl, start, httpd]
  - [ /bin/systemctl, status, httpd]
  - [ wget, "https://raw.githubusercontent.com/mrbbowden/jchome/main/index.html",-O,/var/www/html/index.html ]
 
-
+package_upgrade: true
 #power_state:
 #  mode: reboot
 #  message: Bye Bye
