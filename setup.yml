@@ -2,6 +2,7 @@
 # 
 runcmd:
  - [ yum ,install, -y , httpd ]
+ - [ yum ,install, -y , wget ]
  - [ /bin/systemctl, enable, httpd ]
  - [ /bin/systemctl, start, httpd]
  - [ /bin/systemctl, status, httpd]
