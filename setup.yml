@@ -7,7 +7,7 @@ runcmd:
  - [ /bin/systemctl, status, httpd]
  - [ wget, "https://raw.githubusercontent.com/mrbbowden/jchome/main/index.html",-O,/var/www/html/index.html ]
 
-package_upgrade: true
+#package_upgrade: true
 #power_state:
 #  mode: reboot
 #  message: Bye Bye
