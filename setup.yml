@@ -10,8 +10,14 @@ runcmd:
  - [ /bin/systemctl, status, httpd]
 
 #
-power_state:
-  mode: reboot
-  message: Bye Bye
-  timeout: 30
-  condition: True
+write_files:
+  - path: /var/www/html/index.html
+    content: |
+         <html>
+         Welcome
+         </html>
+#power_state:
+#  mode: reboot
+#  message: Bye Bye
+#  timeout: 30
+#  condition: True
