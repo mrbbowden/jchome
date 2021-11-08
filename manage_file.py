@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+print("Content-type: text/html")
+print("\n\n")
+print('<html>')
+print('<head>')
+print('<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">')
+print('<title>Hello World</title>')
+print('</head>')
+print('<body>')
+print('Hello World')
+print('</body>')
+print('</html>')

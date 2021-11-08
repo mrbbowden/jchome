@@ -19,7 +19,7 @@ resource "aws_instance" "webjson_server" {
   tags = {
     Name = random_pet.name.id
   }
-  
+}  
 resource "aws_security_group" "ssh-sg" {
   name = "${random_pet.name.id}-sg"
   ingress {
@@ -43,4 +43,3 @@ resource "aws_security_group" "ssh-sg" {
   }
   
 }
-

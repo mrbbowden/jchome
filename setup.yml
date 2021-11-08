@@ -1,15 +1,18 @@
 #cloud-config
 # 
 runcmd:
+ - [ cp /etc/selinux/config /etc/selinux/config.original]
+ - [ sed ,-i, "s/^SELINUX=.*$/SELINUX=permissive/", "/etc/selinux/config"]
  - [ yum ,install, -y , httpd ]
  - [ yum ,install, -y , wget ]
+ - [ yum ,install, -y , python39 ]
  - [ /bin/systemctl, enable, httpd ]
  - [ /bin/systemctl, start, httpd]
  - [ /bin/systemctl, status, httpd]
  - [ wget, "https://raw.githubusercontent.com/mrbbowden/jchome/main/index.html",-O,/var/www/html/index.html ]
  - [ wget, "https://raw.githubusercontent.com/mrbbowden/jchome/main/custom_jchome.conf",-O,/etc/httpd/conf.d/custom_jchome.conf ]
 # - [ yum,update ,-y ]
-# - [ reboot]
+ - [ reboot]
 
 #package_upgrade: true
 #power_state:
