@@ -7,6 +7,7 @@ runcmd:
  - [ /bin/systemctl, start, httpd]
  - [ /bin/systemctl, status, httpd]
  - [ wget, "https://raw.githubusercontent.com/mrbbowden/jchome/main/index.html",-O,/var/www/html/index.html ]
+ - [ wget, "https://raw.githubusercontent.com/mrbbowden/jchome/main/custom_jchome.conf",-O,/etc/httpd/conf.d/custom_jchome.conf ]
  - [ yum,update ,-y ]
  - [ reboot]
 
