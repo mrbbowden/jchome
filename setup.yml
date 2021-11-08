@@ -6,6 +6,7 @@ runcmd:
  - [ yum ,install, -y , httpd ]
  - [ yum ,install, -y , wget ]
  - [ yum ,install, -y , python39 ]
+ - [ yum ,install, -y ,  python39-requests ]
  - [ /bin/systemctl, enable, httpd ]
  - [ /bin/systemctl, start, httpd]
  - [ /bin/systemctl, status, httpd]
@@ -13,6 +14,8 @@ runcmd:
  - [ wget, "https://raw.githubusercontent.com/mrbbowden/jchome/main/custom_jchome.conf",-O,/etc/httpd/conf.d/custom_jchome.conf ]
  - [ wget, "https://raw.githubusercontent.com/mrbbowden/jchome/main/manage_file",-O,/var/www/html/manage_file ]
  - [ chmod, "0755", /var/www/html/manage_file ]
+ - [ touch, /var/www/html/localfile.txt ]
+ - [ chown apache:apache /var/www/html/localfile.txt]
 # - [ yum,update ,-y ]
  - [ reboot]
 

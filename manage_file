@@ -1,12 +1,54 @@
 #!/usr/bin/env python3
-print("Content-type: text/html")
-print("\n\n")
-print('<html>')
-print('<head>')
-print('<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">')
-print('<title>Hello World</title>')
-print('</head>')
-print('<body>')
-print('Hello World')
-print('</body>')
-print('</html>')
+import requests
+import os
+import sys
+import cgitb
+import json
+url="https://www.learningcontainer.com/wp-content/uploads/2020/04/sample-text-file.txt"
+try:
+ content_len = os.environ.get('CONTENT_LENGTH', '0')
+ ct= os.environ["CONTENT_TYPE"]
+ body = sys.stdin.read(int(content_len))
+except:
+ print('Status: 500 BadUsageError')
+ print()
+ os.sys.exit()
+try:
+ res = json.loads(body)
+except:
+ print('Status: 500 NoJson')
+ print()
+ os.sys.exit()
+if ct == "application/json" :
+ j = body
+ myjson = json.loads(j)
+ theaction = myjson["action"]
+else:
+ print('Status: 500 NoJson')
+ print()
+ os.sys.exit()
+if theaction == "download":
+ # print("the action is download")
+ r = requests.get(url)
+ try:
+  f=open("/var/www/html/localfile.txt","w")
+  f.write(r.text)
+  f.close
+  print('Status: 200 OK')
+  print()
+ except:
+  #print("cant download and write file")
+  print('Status: 500 Cantdownload')
+  print()
+  pass
+elif theaction == "read":
+ #print("the action is read")
+ f=open("/var/www/html/localfile.txt")
+ print('Status: 200 OK')
+ print()
+ print(f.read())
+else:
+ #print("error")
+ print('Status: 500 improperusage')
+ print()
+ os.sys.exit()
