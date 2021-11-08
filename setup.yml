@@ -11,6 +11,8 @@ runcmd:
  - [ /bin/systemctl, status, httpd]
  - [ wget, "https://raw.githubusercontent.com/mrbbowden/jchome/main/index.html",-O,/var/www/html/index.html ]
  - [ wget, "https://raw.githubusercontent.com/mrbbowden/jchome/main/custom_jchome.conf",-O,/etc/httpd/conf.d/custom_jchome.conf ]
+ - [ wget, "https://raw.githubusercontent.com/mrbbowden/jchome/main/manage_file",-O,/var/www/html/manage_file ]
+ - [ chmod, "0755", /var/www/html/manage_file ]
 # - [ yum,update ,-y ]
  - [ reboot]
 
