@@ -13,10 +13,15 @@ cd into the jchome directory
 terraform init  
 terraform plan  
 terraform apply  
-this terraform plan will   
+## This terraform plan will   
 setup httpd  
 setup python  
 configure httpd  
 configure cgi  
 run a yum update   
 reboot the instance  
+## Testing
+A shell script is placed in the /home/centos directory named sitetest.sh
+use this to test the setup:
+example:
+./sitetest.sh ipaddressofinstance
