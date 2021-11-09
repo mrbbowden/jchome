@@ -20,7 +20,7 @@ setup python
 configure httpd  
 configure cgi  
 place index.html into place  
-place the python cgi into place  
+place the python cgi manage_file into place  
 run a yum update   
 reboot the instance  
 ## Testing
