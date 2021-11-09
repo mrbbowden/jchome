@@ -21,7 +21,7 @@ configure cgi
 run a yum update   
 reboot the instance  
 ## Testing
-A shell script is placed in the /home/centos directory named sitetest.sh
-use this to test the setup:
-example:
-./sitetest.sh ipaddressofinstance
+A shell script is placed in the /home/centos directory named sitetest.sh   
+use this to test the setup:  
+example:  
+./sitetest.sh ipaddressofinstance  
