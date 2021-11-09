@@ -25,5 +25,3 @@ then
 else
  echo "correctcount is $correctcount tests fail"
 fi
- $theaction $curl_status"
-done
