@@ -29,4 +29,4 @@ use this to test the setup:
 example:  
 ./sitetest.sh ipaddressofinstance  
 ## Monitoring
-if this was a real site I would set it up in whatever site monitor tool was in use , preferably via the api  
+if this was a real site I would set it up in whatever site monitor tool was in use , preferably via the tools api  
