@@ -8,7 +8,7 @@ provider "aws" {}
 #PS C:\> $Env:AWS_DEFAULT_REGION=" "
 #ssh key
 #ssh key terraform_key must exist in aws
-#point this at the private key about line 25
+#point this at the private key about line 16
 resource "random_pet" "name" {}
 resource "aws_instance" "webjson_server" {
   ami           = "ami-05d7cb15bfbf13b6d"
