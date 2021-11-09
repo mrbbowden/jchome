@@ -15,7 +15,7 @@ runcmd:
  - [ wget, "https://raw.githubusercontent.com/mrbbowden/jchome/main/manage_file",-O,/var/www/html/manage_file ]
  - [ chmod, "0755", /var/www/html/manage_file ]
  - [ touch, /var/www/html/localfile.txt ]
- - [ chown apache:apache /var/www/html/localfile.txt]
+ - [ chown ,"apache:apache","/var/www/html/localfile.txt"]
 # - [ yum,update ,-y ]
  - [ reboot]
 
