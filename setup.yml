@@ -18,12 +18,5 @@ runcmd:
  - [ chmod, "0755", /home/centos/sitetest.sh ]
  - [ touch, /var/www/html/localfile.txt ]
  - [ chown ,"apache:apache","/var/www/html/localfile.txt"]
-# - [ yum,update ,-y ]
+ - [ yum,update ,-y ]
  - [ reboot]
-
-#package_upgrade: true
-#power_state:
-#  mode: reboot
-#  message: Bye Bye
-#  timeout: 30
-#  condition: True
