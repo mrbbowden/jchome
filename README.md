@@ -23,6 +23,7 @@ place index.html into place
 place the python cgi manage_file into place  
 run a yum update ( this slows the creation by a great deal )  
 reboot the instance  
+Note: at the end of the terraform apply the aws instance id and public ip will be shown for ssh access and testing  
 ## Testing
 A shell script is placed in the /home/centos directory named sitetest.sh   
 use this to test the setup:  
