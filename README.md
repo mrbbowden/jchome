@@ -1,13 +1,13 @@
 # jchome
-#This is the home for jc test#  
+# This is the home for jc test
 My goal is to have minimal requirements and maximum automation  
-##Required:##    
+## Required:
 Terraform installed on workstation  
 AWS credentials already setup on workstation, these credentials need to be able to create ec2 instances and create security groups.  
-##Optional:##  
+## Optional: 
 if you wish to ssh to the created ec2 instance, you need to have the ssh keys on your workstation also  
 This ssh key must be the key used to setup the created ec2 instance  
-##Steps:##  
+## Steps: 
 Clone the repo  
 cd into the jchome directory  
 terraform init  
