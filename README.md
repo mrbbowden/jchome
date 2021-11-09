@@ -29,5 +29,7 @@ A shell script is placed in the /home/centos directory named sitetest.sh
 use this to test the setup:  
 example:  
 ./sitetest.sh ipaddressofinstance  
+coolsite to test with:   
+https://reqbin.com/  
 ## Monitoring
 if this was a real site I would set it up in whatever site monitor tool was in use , preferably via the tools api  
