@@ -21,7 +21,7 @@ configure httpd
 configure cgi  
 place index.html into place  
 place the python cgi manage_file into place  
-run a yum update   
+run a yum update ( this slows the creation by a great deal )  
 reboot the instance  
 ## Testing
 A shell script is placed in the /home/centos directory named sitetest.sh   
